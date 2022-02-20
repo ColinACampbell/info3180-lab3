@@ -5,15 +5,10 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 
-
-
 from app import app
+from app.forms import ContactForm
 from flask import render_template, request, redirect, url_for, flash
-from flask_mail import Mail
-from .config import Config
 
-app.config.from_object(Config)
-mail = Mail(app)
 ###
 # Routing for your application.
 ###
@@ -31,7 +26,8 @@ def about():
 
 @app.route("/contact/")
 def contact() :
-    return render_template('contact.html')
+    form = ContactForm()
+    return render_template('contact.html',form=form)
 
 ###
 # The functions below should be applicable to all Flask apps.
@@ -39,6 +35,7 @@ def contact() :
 
 
 # Flash errors from the form if validation fails
+'''
 def flash_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
@@ -46,6 +43,7 @@ def flash_errors(form):
                 getattr(form, field).label.text,
                 error
             ), 'danger')
+'''
 
 
 @app.route('/<file_name>.txt')
