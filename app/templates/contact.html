@@ -4,7 +4,7 @@
 {% endblock %}
 {% block main %}
 <h1> Contact Form </h1>
-<form>
+<form method="post">
     {{ form.csrf_token }}
 
     <div class="form-group">
@@ -18,14 +18,14 @@
         {{ form.email(size=20,class_="form-control") }}
     </div>
     <div class="form-group">
-        <h4> {{ form.name.label }} </h4>
-        <label>Enter Your {{ form.name.label }}</label>
-        {{ form.name(size=20,class_="form-control") }}
-    </div>
-    <div class="form-group">
         <h4> {{ form.subject.label }} </h4>
         <label>Enter Your {{ form.subject.label }}</label>
         {{ form.subject(size=20,class_="form-control") }}
+    </div>
+    <div class="form-group">
+        <h4> {{ form.message.label }} </h4>
+        <label>Enter Your {{ form.message.label }}</label>
+        {{ form.message(size=20,class_="form-control") }}
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
